@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="form.css" /> -->
+    <style>
+      .form-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+        color: #555;
+      }
+      .blank-boxA {
+        width: 300px;
+      }
+      .small-box {
+        text-align: right;
+        padding-top: 0;
+        border: 3px solid;
+        border-style: double;
+      }
+
+      .form-big-title {
+        font-weight: bold;
+        font-size: 30px;
+        text-align: center;
+        margin: 30px;
+        padding-top: 10px;
+      }
+
+      .align-center-with-div {
+        text-align: center;
+        margin: 0;
+      }
+
+      .customer-box {
+        border: solid 3px;
+        padding: 15px;
+        /* text-align: left; */
+      }
+
+      .photo-box-A {
+        border-top: solid 3px;
+        border-right: solid 3px;
+      }
+      .photo-box-B {
+        border-right: solid 3px;
+      }
+      .photo-box-C {
+        border-right: solid 3px;
+        border-bottom: solid 3px;
+      }
+    </style>
+    <title>Application Form</title>
+    <!--               src="file:///A:/Website Build - Digital Marketing/CS50/Final/backend/static/pdf_logo.JPG"
+ -->
+  </head>
+  <body>
+    <div class="form-box bg-green-100">
+      <table>
+        <!-- PDFKIT src img must use absoulte path, therefore, we may use CDN(eg.Cloudinary or as the following example) -->
+        <!-- src="file:///C:/projectname/Final/backend/static/pdf_logo.JPG" -->
+        <tr>
+          <td class="logo">
+            <img
+              src="https://res.cloudinary.com/lovelyzombie/image/upload/v1641704416/pdf_logo_flask_job_application_wr1dur.jpg"
+              style="width: 100%; max-width: 300px"
+            />
+          </td>
+          <td class="blank-boxA"></td>
+          <td class="small-box">For office use only</td>
+        </tr>
+      </table>
+      <h1 class="form-big-title">Application Form</h1>
+
+      <div class="container">
+        <div class="row">
+          <div class="col customer-box">
+            Applied Position: <br />
+            &emsp; &emsp; {{applied_position}}
+          </div>
+          <div class="col customer-box">
+            Expected Salary: <br />
+            &emsp; &emsp; ${{expected_salary}}
+          </div>
+          <div class="col photo-box-A"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col customer-box">
+            Availability: <br />
+            &emsp; &emsp; {{date_availability}}
+          </div>
+          <div class="col customer-box">
+            Sex: <br />
+            &emsp; &emsp; {{sex}}
+          </div>
+          <div class="col photo-box-B">
+            <!-- <p>&emsp; Put Your Photo Here</p> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col customer-box">
+            First Name: <br />
+            &emsp; &emsp; {{firstName}}
+          </div>
+          <div class="col customer-box">
+            Last Name: <br />
+            &emsp; &emsp; {{lastName}}
+          </div>
+          <div class="col photo-box-B">
+            <p>&emsp; &emsp; Put Your Photo Here</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col customer-box">
+            Id No: <br />
+            &emsp; &emsp; {{idNo}}
+          </div>
+          <div class="col customer-box">
+            Full/Part time: <br />
+            &emsp; &emsp;{{full_or_part_time}}
+          </div>
+          <div class="col photo-box-C"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col customer-box">
+            Email: <br />
+            &emsp; &emsp; {{email}}
+          </div>
+          <div class="col customer-box">
+            Phone: <br />
+            &emsp; &emsp;{{phone}}
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col customer-box">
+            Address: <br />
+            &emsp; &emsp; {{address}}
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div class="form-big-title">Authorization & Declaration
+    </div>
+    <div>
+      I, the undersigned, declare that the information given in this Application
+      Form is true to the best of my knowledge. I understand that any false
+      information shall render my liability to summary dismissal if I am
+      employed by XXX company.
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col customer-box">
+          Date: <br />
+          &emsp; &emsp;
+        </div>
+        <div class="col customer-box">
+          Signature: <br />
+          &emsp; &emsp;
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+</html>

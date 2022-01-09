@@ -1,0 +1,33 @@
+.form-box {
+  max-width: 800px;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #eee;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  color: #555;
+}
+.blank-boxA {
+  width: 300px;
+}
+.small-box {
+  text-align: right;
+  padding-top: 0;
+  border: 3px solid;
+  border-style: double;
+}
+
+.form-big-title {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  margin: 30px;
+  padding-top: 10px;
+}
+
+.align-center-with-div {
+  text-align: center;
+  margin: 0;
+}

@@ -1,0 +1,7 @@
+Id,FirstName,LastName,ID no.,Applied Position,Expected Salary,Date Availability,Full or Part Time,Sex,Address,Phone,Email
+1,next,1234,ID,POSITION,1000.0,2021-11-26,Full,MALE,"Flat A, Hong Kong",67774888,MALE@gmail.com
+2,test,test,TEST,POSITION,2000.0,2021-11-27,Full,MALE,"Block B, Hong Kong",25986345,MALE@gmail.com
+3,test,john,doe,Customer service,10000.0,2021-12-14,Full,female,Test address,77777777,asd@gmail.com
+4,John,Doe,A1234,Security Guard,5000.0,2022-01-04,Full,Female,"Harvard University Massachusetts Hall Cambridge, MA 02138",12345678,test@gmail.com
+5,First,Last,B12345,Web developer,3000.0,2022-01-12,Full,Male,"Harvard University Massachusetts Hall Cambridge, MA 02138",32165487,first@gmail.com
+6,cs50,cs50,A1234678,Web developer,3000.0,2022-01-13,Full,Male,Test Address,12345678,123@gmail.com
