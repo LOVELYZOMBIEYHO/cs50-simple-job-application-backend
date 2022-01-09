@@ -12,6 +12,7 @@ import csv
 import pdfkit
 from werkzeug.wrappers import response
 
+import pydf
 
 app = Flask(__name__)
 CORS(app)
@@ -180,15 +181,21 @@ def pdf_template(id):
     print(pdfApplicantData)
     rendered = render_template("pdf_template.html", id=id, firstName=pdfApplicantData.firstName, lastName= pdfApplicantData.lastName,idNo= pdfApplicantData.idNo,applied_position= pdfApplicantData.applied_position,expected_salary= pdfApplicantData.expected_salary,date_availability= pdfApplicantData.date_availability,full_or_part_time= pdfApplicantData.full_or_part_time,sex= pdfApplicantData.sex,address= pdfApplicantData.address,phone= pdfApplicantData.phone,email= pdfApplicantData.email)
     
-    #  Make PDF and output
+    #  Make PDF and output on Localhost
 
-    css = ['templates/bootstrap.min.css']
-    kitoptions = {"enable-local-file-access": None}
-    config = pdfkit.configuration(wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
-    pdf = pdfkit.from_string(rendered,"output.pdf", configuration=config, css=css, options=kitoptions)
-    return flask.send_file('output.pdf', as_attachment=True)
+    # css = ['templates/bootstrap.min.css']
+    # kitoptions = {"enable-local-file-access": None}
+    # config = pdfkit.configuration(wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
+    # pdf = pdfkit.from_string(rendered,"output.pdf", configuration=config, css=css, options=kitoptions)
+    # return flask.send_file('output.pdf', as_attachment=True)
     
 
+    #  Make PDF and output on Heroku
+    css = ['templates/bootstrap.min.css']
+    kitoptions = {"enable-local-file-access": None}
+    config = pdfkit.configuration(wkhtmltopdf='./bin/wkhtmltopdf')
+    pdf = pdfkit.from_string(rendered,"output.pdf", configuration=config, css=css, options=kitoptions)
+    return flask.send_file('output.pdf', as_attachment=True)
 
 
 
