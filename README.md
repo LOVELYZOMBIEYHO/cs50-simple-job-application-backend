@@ -3,6 +3,8 @@
 Python version 3.10.0
 
 URL:https://cs50-simple-job-application.herokuapp.com/
+
+
 -Create an environment
 
 > mkdir myproject
