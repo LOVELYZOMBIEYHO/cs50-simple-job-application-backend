@@ -14,17 +14,55 @@ from werkzeug.wrappers import response
 
 import pydf
 
+
+
+
+
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.root_path, 'sqlite.db')
+
+# Sqlite local and Heroku(but will be delected)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.root_path, 'sqlite.db')
+
+
+# # Postgresql local (//postgres is the username, admin is the password)
+# app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:admin@localhost/applicants"
+
+# Postgresql on Heroku
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://vbxdmnfehojnxz:68ec51f7cf1f6b618128a832a8db723d4fb1d187d4e9db2a1f21de2b5c0011a5@ec2-3-225-41-234.compute-1.amazonaws.com:5432/d9ifb8hauf04jq"
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
 app.secret_key = 'BAD_SECRET_KEY'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
 
 
+#  DB model of sqlite
+# class Applicant(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     firstName = db.Column(db.String(20),nullable=False)
+#     lastName = db.Column(db.String(20),nullable=False)
+#     idNo = db.Column(db.String(20), unique=True,nullable=False)
+#     applied_position = db.Column(db.String(20),nullable=False)
+#     expected_salary = db.Column(db.Float(10),nullable=False)
+#     date_availability = db.Column(db.Date, nullable=False)
+#     full_or_part_time = db.Column(db.String(20),nullable=False)
+#     sex = db.Column(db.String(10),nullable=False)
+#     address = db.Column(db.String(100),nullable=False)
+#     phone = db.Column(db.String(20),nullable=False)
+#     email = db.Column(db.String(40),nullable=False)
 
+# class Admin(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     adminName = db.Column(db.String(25),nullable=False,unique=True)
+#     adminPassword = db.Column(db.String(30),nullable=False,unique=True)
+
+
+# Db model of Postgresql 
 class Applicant(db.Model):
+    __tablename__= 'applicant'
+
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(20),nullable=False)
     lastName = db.Column(db.String(20),nullable=False)
@@ -38,12 +76,31 @@ class Applicant(db.Model):
     phone = db.Column(db.String(20),nullable=False)
     email = db.Column(db.String(40),nullable=False)
 
+    def __init__(self, firstName, lastName, idNo, applied_position,expected_salary,date_availability,full_or_part_time,sex,address,phone,email):
+            self.firstName = firstName
+            self.lastName = lastName
+            self.idNo = idNo
+            self.applied_position = applied_position
+            self.expected_salary = expected_salary
+            self.date_availability = date_availability
+            self.full_or_part_time = full_or_part_time
+            self.sex = sex
+            self.address = address
+            self.phone = phone
+            self.email = email    
+
+
 class Admin(db.Model):
+    __tablename__= 'admin'
+
     id = db.Column(db.Integer, primary_key=True)
     adminName = db.Column(db.String(25),nullable=False,unique=True)
     adminPassword = db.Column(db.String(30),nullable=False,unique=True)
- 
 
+    def __init__(self, id, adminName, adminPassword):
+        self.id = id
+        self.adminName = adminName
+        self.adminPassword = adminPassword
 
 
 @app.route('/', methods=["GET", "POST"])
