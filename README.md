@@ -1,3 +1,7 @@
+\*\*\* Heroku Must not use Sqlite because of Dyno of Heroku (The data will be deleted automatically),should use Postgresql.
+
+Python version 3.10.0
+
 -Create an environment
 
 > mkdir myproject
@@ -45,4 +49,36 @@ email = db.Column(db.String(120), unique=True, nullable=False)
 
 ---
 
-Python version 3.10.0
+PDFKIT on Heroku (important when deploy Heroku app)
+
+https://www.nuanced.it/2018/05/using-pdfkit-on-heroku.html
+
+Solution:
+
+Step 1:
+I recently set up a PDF rendering engine on Heroku using the Python library pdfkit. There was a bit of extra work to get pdfkit working on Heroku.
+
+Step 1: Install the wkhtmltopdf buildpack
+
+https://github.com/dscout/wkhtmltopdf-buildpack
+
+In vscode powershell, type:
+
+heroku buildpacks:add https://github.com/dscout/wkhtmltopdf-buildpack.git
+
+Then:
+
+heroku config:set WKHTMLTOPDF_VERSION="0.12.4"
+
+Then, Step 2:
+
+Change your code:
+
+config = pdfkit.configuration(wkhtmltopdf='./bin/wkhtmltopdf')
+
+pdf = pdfkit.from_string(html, False, options=options, configuration=config)
+
+My example:
+
+config = pdfkit.configuration(wkhtmltopdf='./bin/wkhtmltopdf')
+pdf = pdfkit.from_string(rendered,"output.pdf", configuration=config, css=css, options=kitoptions)
