@@ -29,7 +29,7 @@ CORS(app)
 # app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:admin@localhost/applicants"
 
 # Postgresql on Heroku
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://umerptwculzqng:daa0526f1e5d920d78c4e9c12d496a409f948f5daecf98d0d2dfb3cd53fe2466@ec2-18-209-169-66.compute-1.amazonaws.com:5432/d7mj4rkg2tfbqi"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://umerptwculzqng:daa0526f1e5d920d78c4e9c12d496a409f948f5daecf98d0d2dfb3cd53fe2466@ec2-18-209-169-66.compute-1.amazonaws.com:5432/d7mj4rkg2tfbqi"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
