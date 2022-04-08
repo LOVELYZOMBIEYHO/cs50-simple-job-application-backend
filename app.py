@@ -21,7 +21,7 @@ import pydf
 app = Flask(__name__)
 CORS(app)
 
-# Sqlite local and Heroku(but will be delected)
+# Sqlite local and Heroku(but files will be deleted by Heroku Dynos regulary)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.root_path, 'sqlite.db')
 
 
